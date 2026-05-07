@@ -1,5 +1,23 @@
 ## 🍦TRABALHO FLAVORETTO (WEB)🍦 ##
 
+
+# PROFESSORES #
+<table>
+  <tr>
+    <th> Nomes Professores </th>
+    <th> Link Github </th>
+  </tr>
+  <tr>
+    <td> Gustavo Meneghetti Arcolezi </td>
+    <td> <a href = "https://github.com/gustavo96ma"> Github Professor Gustavo </a> </td>
+  </tr>
+  <tr>
+    <td> Renata Cavalini </td>
+    <td> <a> X </a> </td>
+  </tr>
+</table>
+
+# ALUNOS #
 <table>
   <tr>
     <th> Nomes Integrante </th>
