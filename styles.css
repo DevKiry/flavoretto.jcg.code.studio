@@ -1,0 +1,148 @@
+*{
+    margin:0;
+}
+
+body{
+    background:#f3f3f3;
+    color:#222;
+}
+
+header{
+    background:#a8a8a8;
+    padding:20px 8%;
+    display:flex;
+    justify-content:space-between;
+}
+
+.logo{
+    font-size:38px;
+}
+
+nav{
+    display:flex;
+    gap:35px;
+}
+
+nav a{
+    color:#111;
+}
+
+.menu{
+    font-size:30px;
+}
+
+.hero{
+    background:#626262;
+    min-height:85vh;
+    display:flex;
+    align-items:center;
+    padding:60px 8%;
+    flex-wrap:wrap;
+}
+
+.hero-text{
+    max-width:500px;
+}
+
+.hero-text h1{
+    font-size:64px;
+}
+
+.hero-text p{
+    font-size:20px;
+}
+
+.btn{
+    background:#474747;
+    color:white;
+    font-size:22px;
+}
+
+.hero-image img{
+    width:500px;
+    max-width:100%;
+}
+
+.sobre{
+    padding:90px 8%;
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.sobre-text{
+    flex:1;
+}
+
+.sobre-text h2{
+    font-size:52px;
+}
+
+.sobre-text p{
+    font-size:20px;
+}
+
+.sobre-image{
+    flex:1;
+}
+
+.sobre-image img{
+    width:100%;
+}
+
+.beneficios{
+    padding:0 8% 80px;
+}
+
+.beneficios-box{
+    background:#686868;
+    padding:40px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.12);
+}
+
+.beneficio h3{
+    font-size:26px;
+}
+
+.beneficio p{
+    font-size:18px;
+}
+
+.produtos{
+    padding:50px 8% 100px;
+}
+
+.produtos h2{
+    font-size:55px;
+}
+
+.produtos h3{
+    font-size:38px;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:#494949;
+    padding:25px;
+    text-align:center;
+}
+
+.card img{
+    width:100%;
+    height:220px;
+    object-fit:contain;
+    margin-bottom:20px;
+}
+
+.center{
+    text-align:center;
+    margin-top:50px;
+}
