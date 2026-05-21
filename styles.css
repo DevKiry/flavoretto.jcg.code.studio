@@ -146,3 +146,21 @@ nav a{
     text-align:center;
     margin-top:50px;
 }
+
+/* Formulário */
+.overlay_formulario {
+    border-radius: 15px;
+    margin-left: 50px;
+    padding: 20px;
+    width: 500px;
+    background-color: #494949;
+}
+
+.card_caracteristicas img {
+    width: 50px;
+    height: auto;
+}
+
+.endereco_footer img {
+    width: 50px;
+}
