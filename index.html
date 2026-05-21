@@ -1,235 +1,213 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Flavoretto</title>
-
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flavoretto – Sabor que alegra seu dia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-    <!------------- HAMBURGUER -------------->
+<div class="badge-aberto-fixed">
+  <div class="dot-green"></div> Aberto
+</div>
 
-    <header>
-        <div class="logo">
-            <img src="IMAGENS/LOGOTIPO.png" alt="logotipo">
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <button class="mobile-close-btn" id="mobileCloseBtn">✕</button>
+  </div>
+  <ul>
+    <li><a href="#hero" class="menu-link">Home</a></li>
+    <li><a href="#sobre" class="menu-link">Sobre</a></li>
+    <li><a href="#cardapio" class="menu-link">Cardápio</a></li>
+    <li><a href="#delivery" class="menu-link">Delivery</a></li>
+    <li><a href="#contato" class="menu-link">Contato</a></li>
+  </ul>
+</div>
+
+<nav>
+  <a href="#hero" class="nav-logo">
+    <img src="imagens/Logo.png" alt="Flavoretto Logo"/>
+  </a>
+  <ul>
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#cardapio">Cardápio</a></li>
+    <li><a href="#delivery">Delivery</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<section id="hero">
+  <div class="hero-rays"></div>
+  <div class="hero-left">
+    <div class="mode-badge">Modo claro ☀️</div>
+    <h1 class="hero-title">Sabor que<br>alegra seu dia.</h1>
+    <p class="hero-sub">Sorvetes e açaí preparados para transformar momentos simples em experiências especiais.</p>
+    <a href="https://zapdelivery.me/flavorettosorveteseacai?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAdGRzdgR8WdRleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAaeEG7mjjjgfXmElG0zeXgvxCqvcOe-YvXOtXDH_japQRMyxHLxy7uMlJ2Cv_g_aem_N96MaGredPNLt1ZQWPCLcA" class="btn-delivery">Peça Delivery</a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-cup-wrap">
+      <div class="badge-delivery">😍 Delivery rápido e barato</div>
+      <img src="imagens/itembanner1.png" alt="Copo de Açaí Flavoretto" class="hero-cup-img"/>
+    </div>
+    <div class="hero-bag-wrap">
+      <img src="imagens/itembanner2.png" alt="Sacola Flavoretto" class="hero-bag-img"/>
+      <div class="badge-loc">📍 Sarandi e Região</div>
+    </div>
+  </div>
+</section>
+
+<section id="sobre" class="reveal">
+  <div class="sobre-inner">
+    <div class="sobre-text">
+      <h2 class="sobre-title">Mais sabor, mais praticidade,<br>mais Flavoretto.</h2>
+      <p class="sobre-p">Desde 2016, a Flavoretto transforma momentos simples em experiências cheias de sabor.</p>
+      <p class="sobre-p">Com uma proposta acessível, prática e acolhedora, levamos até nossos clientes sorvetes, açaís e sobremesas pensados para o dia a dia.</p>
+    </div>
+    <div class="sobre-video-wrap">
+      <video src="imagens/video-loja.mp4" autoplay muted loop playsinline></video>
+    </div>
+  </div>
+</section>
+
+<div class="features-wrap reveal">
+  <div class="features-card">
+    <div class="feat-item">
+      <img src="imagens/entregador-10.png" alt="Delivery rápido" class="feat-icon-img"/>
+      <div class="feat-body">
+        <h4>Delivery rápido</h4>
+        <p>Seu pedido chegando com praticidade, agilidade e muito sabor.</p>
+      </div>
+    </div>
+    <div class="feat-item">
+      <img src="imagens/entregador-11.png" alt="Sabores que conquistam" class="feat-icon-img"/>
+      <div class="feat-body">
+        <h4>Sabores que conquistam</h4>
+        <p>Açaís, sorvetes e sobremesas preparados para todos os gostos.</p>
+      </div>
+    </div>
+    <div class="feat-item">
+      <img src="imagens/entregador-12.png" alt="Preço que cabe no bolso" class="feat-icon-img"/>
+      <div class="feat-body">
+        <h4>Preço que cabe no bolso</h4>
+        <p>Mais custo-benefício para aproveitar sem preocupação.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="cardapio" class="reveal">
+  <div class="sec-label">Nossos Produtos</div>
+  <div class="sec-sub">Os Queridinhos ❤️</div>
+  <div class="carousel-outer">
+    <button class="carousel-btn prev" id="carPrev">&#8592;</button>
+    <div class="carousel-track-wrap">
+      <div class="carousel-track" id="carTrack">
+        <div class="product-card">
+          <div class="p-img"><img src="imagens/queridinho1.png" alt="Copo de Açaí"/></div>
+          <div class="p-name">Copo de Açaí</div>
         </div>
-
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">Quem Somos</a>
-            <a href="#">Produtos</a>
-            <a href="#">Delivery</a>
-            <a href="#">Contato</a>
-        </nav>
-
-        <div class="menu">☰</div>
-    </header>
-
-    <!---------------- HERO DO SITE ----------------->
-
-    <section class="hero">
-
-        <div class="hero-text">
-            <h1>Sabor que alegra seu dia.</h1>
-
-            <p>
-            Sorvetes e açaí preparados para transformar
-            momentos simples em experiências especiais.
-            </p>
-
-            <a href="#" class="btn">Peça Delivery</a>
+        <div class="product-card">
+          <div class="p-img"><img src="imagens/queridinho2.png" alt="Marmita de Açaí"/></div>
+          <div class="p-name">Marmita de Açaí</div>
         </div>
-
-        <div class="hero-image">
-            <img src="IMAGENS/COPO DE SORVETE.png" alt="imagem_pote_acai">
-            <img src="IMAGENS/SACO DELIVERY.png" alt="imagem_saco_delivery">
+        <div class="product-card">
+          <div class="p-img"><img src="imagens/queridinho3.png" alt="Casquinhas"/></div>
+          <div class="p-name">Casquinhas</div>
         </div>
-
-    </section>
-
-    <!------------------- SOBRE --------------------->
-
-    <section class="sobre">
-
-        <div class="sobre-text">
-            <h2>Mais sabor, mais praticidade, mais Flavoretto.</h2>
-
-            <p>
-                Desde 2016, a Flavoretto transforma momentos
-                simples em experiências cheias de sabor.
-            </p>
-
-            <p>
-                Com uma proposta acessível, prática e acolhedora,
-                levamos até nossos clientes sorvetes, açaís e
-                sobremesas pensados para o dia a dia.
-            </p>
+        <div class="product-card">
+          <div class="p-img"><img src="imagens/queridinho4.png" alt="Milk-shakes"/></div>
+          <div class="p-name">Milk-shakes</div>
         </div>
+      </div>
+    </div>
+    <button class="carousel-btn next" id="carNext">&#8594;</button>
+    <div class="carousel-dots" id="carDots">
+      <div class="c-dot active"></div>
+      <div class="c-dot"></div>
+      <div class="c-dot"></div>
+      <div class="c-dot"></div>
+    </div>
+  </div>
+  <a href="https://zapdelivery.me/flavorettosorveteseacai?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAdGRzdgR8WdRleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAaeEG7mjjjgfXmElG0zeXgvxCqvcOe-YvXOtXDH_japQRMyxHLxy7uMlJ2Cv_g_aem_N96MaGredPNLt1ZQWPCLcA" class="btn-full">Cardápio completo →</a>
+</section>
 
-        <div class="sobre-image">
-            <video width="640" height="360" autoplay muted loop>
-                <source src="IMAGENS/VÍDEO FACHADA.mp4" type="video/mp4">
-            </video>
-        </div>
+<section id="delivery" class="reveal">
+  <h2 class="order-title">Encontrou algo no cardápio<br>que chamou sua atenção?</h2>
+  <p class="order-sub">Preencha as informações abaixo para continuar o atendimento pelo WhatsApp.</p>
+  <div class="order-layout">
+    <div class="order-form">
+      <div class="form-group">
+        <label>Seu nome:</label>
+        <input type="text" id="nome" placeholder="Como podemos te chamar?"/>
+      </div>
+      <div class="form-group">
+        <label>Produto desejado:</label>
+        <input type="text" id="produto" placeholder="Descreva o item escolhido..."/>
+      </div>
+      <div class="form-group">
+        <label>Endereço para entrega:</label>
+        <input type="text" id="endereco" placeholder="Rua, número e bairro..."/>
+      </div>
+      <div class="form-group">
+        <label>Observações (opcional):</label>
+        <textarea id="obs" placeholder="Retirar ingredientes, complementos, etc..."></textarea>
+      </div>
+      <button class="btn-send" id="btnSend">Enviar informações</button>
+    </div>
+    <div class="order-info">
+      <div class="info-row">
+        <div class="info-ico">⚡</div>
+        <div><h4>Entrega rápida</h4><p>Em toda Sarandi e região.</p></div>
+      </div>
+      <div class="info-row">
+        <div class="info-ico">🕐</div>
+        <div><h4>Terça a domingo</h4><p>Das 11h30 às 23h.</p></div>
+      </div>
+      <div class="info-row">
+        <div class="info-ico">❤️</div>
+        <div><h4>Qualidade e delícia</h4><p>Levamos felicidade até a sua casa.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    </section>
-
-  <!---------------- BENEFICIOS -------------------->
-
-    <section class="beneficios">
-
-        <div class="beneficios-box">
-
-            <div class="beneficio">
-                <img src="IMAGENS/ENTREGADOR ROXO.png" alt="imagem_entregador">
-                <h3>Delivery rápido</h3>
-                <p>
-                Seu pedido chegando com praticidade,
-                agilidade e muito sabor.
-                </p>
-            </div>
-
-            <div class="beneficio">
-                <img src="IMAGENS/PAI E FILHO SORVETE ROXO.png" alt="imagem_pai_e_filho">
-                <h3>Sabores que conquistam</h3>
-                <p>
-                Açaís, sorvetes e sobremesas
-                preparados para todos os gostos.
-                </p>
-            </div>
-
-            <div class="beneficio">
-                <img src="IMAGENS/COFRE PORQUINHO ROXO.png" alt="imagem_cofrinho">
-                <h3>Preço que cabe no bolso</h3>
-                <p>
-                Mais custo-benefício para aproveitar
-                sem preocupação.
-                </p>
-            </div>
-
-        </div>
-
-    </section>
-
-  <!----------------- PRODUTOS -------------------->
-
-    <section class="produtos">
-
-        <h2>Nossos Produtos</h2>
-        <h3>Os Queridinhos</h3>
-
-        <div class="cards">
-
-            <div class="card">
-                <img src="IMAGENS/COPO AÇAÍ.png" alt="imagem_copo_acai">
-                <h4>Copo de Açaí</h4>
-            </div>
-
-            <div class="card">
-                <img src="IMAGENS/TIJELA DE AÇAÍ.png" alt="marmita_acai">
-                <h4>Marmita de Açaí</h4>
-            </div>
-
-            <div class="card">
-                <img src="IMAGENS/CASQUINHA.png" alt="imagem_casquinha">
-                <h4>Casquinhas</h4>
-            </div>
-
-            <div class="card">
-                <img src="IMAGENS/MILK-SHAKE.png" alt="imagem_milk-shake">
-                <h4>Milk-shakes</h4>
-            </div>
-
-        </div>
-
-        <div class="center">
-            <a href="#" class="btn">Cardápio Completo</a>
-        </div>
-
-    </section>
-
-    <!-----------------| Formulário |----------------->
-
-    <section class="formulario">
-        <h1>Encontrou algo no cardápio que chamou sua atenção?</h1>
-        <p>Preencha as informações abaixo para continuar o atendimento pelo WhatsApp.</p>
-
-        <div class="overlay_formulario">
-            <div class="campo_nome">
-                <label for="nome">Seu nome:</label>
-                <input type="text" name="nome" id="nome" placeholder="Como podemos te chamar?">
-            </div>
-
-            <div class="campo_produto">
-                <label for="produto">Produto desejado:</label>
-                <input type="text" name="produto" id="produto" placeholder="Descreva o item escolhido...">
-            </div>
-
-            <div class="campo_endereco">
-                <label for="endereco">Endereço para entrega:</label>
-                <input type="text" name="endereco" id="endereco" placeholder="Rua, número e bairro...">
-            </div>
-
-            <div class="campo_observacoes">
-                <label for="observacoes">Observações(Opcional):</label>
-                <input type="text" name="observacoes" id="observacoes" placeholder="Retirar ingredientes, complementos, etc...">
-            </div>
-
-            <button class="enviar_info">Enviar informações</button>
-        </div>
-    </section>
-
-    <!-----------------| Caracteristicas |----------------->
-    <section class="caracteristicas">
-        <div class="card_caracteristicas">
-            <img src="IMAGENS/ENTREGA RÁPIDA.png" alt="imagem_entrega_rapida">
-            <h2>Entrega rápida</h2>
-            <p>Em toda Sarandi e região</p>
-        </div>
-
-        <div class="card_caracteristicas">
-            <img src="IMAGENS/TERÇA A DOMINGO.png" alt="imagem_dias_funcionamento">
-            <h2>Terça a Domingo</h2>
-            <p>Das 11h30 às 23h</p>
-        </div>
-
-        <div class="card_caracteristicas">
-            <img src="IMAGENS/QUALIDADE E DELÍCIA.png" alt="imagem_ai_qui_dilissa">
-            <h2>Qualidade e delícia</h2>
-            <p>Levamos felicidade até sua casa</p>
-        </div>
-    </section>
-
-    <!-----------------| Mapa e rodapé |----------------->
-    <section class="footer">
-        <div class="endereco_footer">
-            <img src="IMAGENS/LOGOTIPO.png" alt="logotipo">
-            <h3>Visite nossa loja física!</h3>
-            <p>Sarandi-PR</p>
-            <p>Av. Rio Branco, 284</p>
-            <p>Jd. Independência III</p>
-            <p>CEP: 87114-230</p>
-        </div>
-
-        <div class="contato_footer">
-            <div class="contato_whatsapp">
-                <h3>Telefone:</h3>
-                <img src="IMAGENS/ICON WHATSAPP BRANCO.png" alt="whatsapp">
-                <p>+55 (44) 9956-9652</p>
-            </div>
-            
-            <div class="contato_instagram">
-                <h3>Siga nossa rede social:</h3>
-                <img src="IMAGENS/ICON INSTAGRAM BRANCO.png" alt="instagram">
-
-                <a href="https://www.instagram.com/flavorettosorveteria/" class="contato_instagram_button" target="_blank">Instagram</a>
-            </div>
-        </div>
-        
-    </section>
-
+<footer id="contato" class="reveal">
+  <div class="footer-brand">
+    <img src="imagens/Logo.png" alt="Flavoretto"/>
+  </div>
+  <div class="footer-main">
+    <div class="footer-addr">
+      <h4>Visite nossa loja física!</h4>
+      <p>Sarandi-PR<br>Av. Rio Branco, 284<br>Id. Independência III<br>CEP: 87114-230</p>
+    </div>
+    <div class="footer-map-box">📍 ADICIONAR GOOGLE MAPS</div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-col">
+      <h4>Telefone:</h4>
+      <a href="https://wa.me/554499569652" class="foot-link">
+        <div class="fl-ico">📞</div> +55 44 9956-9652
+      </a>
+    </div>
+    <div class="footer-col">
+      <h4>Siga nossa rede social:</h4>
+      <a href="https://www.instagram.com/flavorettosorveteria?igsh=MWQ4aHVobTV0ZTBzNA==" target="_blank" class="foot-link">
+        <div class="fl-ico">📸</div> Instagram
+      </a>
+    </div>
+  </div>
+  <div class="footer-copy">© 2026 Flavoretto – Todos os direitos reservados</div>
+</footer>
+<script src="script.js"></script>
 </body>
 </html>
