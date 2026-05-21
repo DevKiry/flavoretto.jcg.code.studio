@@ -116,6 +116,10 @@ nav a{
     font-size:18px;
 }
 
+.beneficio img {
+    width: 100px;
+}
+
 /* Produtos */
 .produtos{
     padding:50px 8% 100px;
@@ -170,4 +174,10 @@ nav a{
 
 .endereco_footer img {
     width: 50px;
+}
+
+.contato_footer img {
+    background-color: #222;
+    padding: 10px;
+    width: 100px;
 }
