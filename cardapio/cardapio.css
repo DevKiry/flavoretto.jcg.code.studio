@@ -1,1 +1,721 @@
+*, *::before, *::after { 
+    
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
 
+}
+
+:root {
+
+    --yellow: #F9C900;
+    --purple: #7B2D8B;
+    --white: #FFFFFF;
+    --text-dark: #111;
+    --text-gray: #555;
+
+}
+
+body.dark-mode {
+
+    --yellow: #7B2D8B;
+    --purple: #F9C900;
+    --white: #111;
+    --text-dark: #FFFFFF;
+    --text-gray: #aaaaaa;
+}
+
+html { 
+    
+    scroll-behavior: smooth; 
+
+}
+
+body { 
+    
+    font-family: 'Nunito', sans-serif;
+    background: var(--white); 
+    color: var(--text-dark); 
+    overflow-x: hidden; 
+
+}
+
+.badge-aberto-fixed {
+
+    position: fixed; 
+    bottom: 28px; 
+    right: 28px; 
+    z-index: 500;
+    background: var(--white); 
+    border-radius: 50px;
+    padding: 10px 20px;
+    display: flex; 
+    align-items: center; 
+    gap: 8px;
+    font-weight: 800; 
+    font-size: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.18);
+
+}
+
+.dot-green { 
+    
+    width: 12px; 
+    height: 12px; 
+    border-radius: 50%; 
+    background: #22c55e; 
+    flex-shrink: 0; 
+
+}
+
+#hero {
+
+    margin-top: 100px;
+    background: var(--yellow);
+    min-height: 560px;
+    display: flex; 
+    align-items: center;
+    padding: 20px 6% 0;
+    position: relative;
+    overflow: hidden; 
+    
+}
+
+.hero-rays {
+    
+    position: absolute; 
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 160%; 
+    height: 200%;
+    background: repeating-conic-gradient(rgba(255,255,255,.09) 0deg 10deg, transparent 10deg 20deg);
+    border-radius: 50%;
+    animation: spin 40s linear infinite;
+    pointer-events: none;
+
+}
+
+@keyframes spin { 
+
+    to { 
+        
+        transform: translate(-50%,-50%) rotate(360deg); 
+
+    } 
+
+}
+
+.hero-left {
+
+    position: relative;
+    text-align: left;
+    margin-left: 200px;
+    z-index: 2;
+    flex: 0 0 440px;
+    max-width: 440px;
+
+}
+
+.hero-right {
+
+    position: relative; 
+    z-index: 2;
+    flex: 1; 
+    display: flex;
+    align-items: center; /* Centraliza a composição */
+    justify-content: right;
+    min-width: 0; 
+    padding-right: 25px;
+
+}
+
+.botoes_cima {
+
+    display: inline-flex; 
+    align-items: left;
+    gap: 8px;
+    background: var(--white); 
+    color: var(--text-dark);
+    border-radius: 30px;
+    padding: 6px 16px; 
+    font-size: 14px; 
+    font-weight: 700;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.1);
+
+}
+
+.hero-title {
+
+    font-family: 'Fredoka One', cursive;
+    font-size: 62px; 
+    line-height: 1.05;
+    color: var(--purple); 
+    margin-bottom: 16px;
+    text-align: left;
+
+}
+
+.btn-delivery {
+
+    display: block; 
+    text-align: center;
+    background: var(--purple); 
+    color: var(--white);
+    font-family: 'Fredoka One', cursive; 
+    font-size: 24px;
+    padding: 16px 56px; 
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(123,45,139,.4);
+    transition: transform .2s, box-shadow .2s;
+    margin-bottom: 32px;
+
+}
+
+.hero-cup-img {
+
+    height: 520px;
+    width: auto;
+    filter: drop-shadow(0 30px 40px rgba(0,0,0,.25));
+    animation: float 4s ease-in-out infinite;
+
+}
+
+nav {
+
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    z-index: 200;
+    background: var(--yellow);
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px 0 48px;
+    height: 100px;
+    border-bottom: 2px solid rgba(0,0,0,.07);
+    overflow: visible;
+
+}
+
+.nav-logo {
+    
+    display: flex; 
+    align-items: center;
+    text-decoration: none;
+    position: relative;
+    z-index: 201;
+
+}
+
+.nav-logo img {
+
+    height: 70px;
+    filter: drop-shadow(0 4px 10px rgba(0,0,0,.22));
+    top: 12px; 
+
+}
+
+#distancia {
+
+    margin-top: 2%;
+    
+}
+
+.features-wrap { 
+    
+    background: var(--white); 
+    padding: 0 6% 80px; 
+
+}
+
+.features-card {
+
+    background: var(--yellow); 
+    border-radius: 24px;
+    padding: 40px 50px;
+    display: flex; 
+    align-items: flex-start;
+    justify-content: space-around; 
+    gap: 10px;
+
+}
+
+.feat-item { 
+    
+    flex: 1; 
+    display: flex; 
+    align-items: flex-start; 
+    gap: 16px; 
+    padding: 0 16px; 
+
+}
+
+.feat-icon-img { 
+    
+    width: 56px; 
+    height: 56px; 
+    object-fit: contain; 
+    flex-shrink: 0; 
+
+}
+
+.feat-body h4 { 
+    
+    font-weight: 800; 
+    font-size: 17px; 
+    color: var(--text-dark); 
+    margin-bottom: 6px; 
+
+}
+
+.feat-body p { 
+    
+    font-size: 14px; 
+    color: rgba(0,0,0,.7); 
+    line-height: 1.5; 
+
+}
+
+#busca {
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 6% 40px;
+    gap: 12px;
+
+}
+
+#lupa {
+
+    position: absolute;
+    right: calc(6% + 28px);
+    top: 15px;
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    z-index: 2;
+
+}
+
+#txtBusca {
+
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    width: 100%;
+    background: white;
+    border-radius: 24px;
+    padding: 22px 28px;
+    text-align: left;
+    border-color: var(--text-dark);
+    outline: none;
+    font-size: 18px;
+
+}
+
+#categorias { 
+    
+    padding: 0 6% 80px; 
+    background: var(--white); 
+
+}
+
+.sec-label {
+
+    font-family: 'Fredoka One', cursive;
+    font-size: 36px; 
+    color: var(--purple); 
+    margin-bottom: 4px;
+
+}
+
+.card-categoria {
+
+    flex: 0 0 calc((100% - 60px) / 3);
+    background: var(--white); 
+    border-radius: 100px;
+    overflow: hidden; 
+    cursor: pointer;
+    transition: transform .25s, box-shadow .25s;
+    flex-shrink: 0;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.card-categoria:hover { 
+    
+    transform: translateY(-6px); 
+    box-shadow: 0 16px 40px rgba(0,0,0,.14);
+
+}
+
+.carousel-outer { 
+    
+    position: relative; 
+    margin-bottom: 36px; 
+
+}
+
+.carousel-track-wrap { 
+    
+    overflow: hidden; 
+    border-radius: 16px; 
+
+}
+
+.carousel-track {
+
+    display: flex; 
+    transition: transform .4s cubic-bezier(.4,0,.2,1);
+    gap: 20px;
+
+}
+
+.carousel-btn {
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--purple);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+
+}
+
+.carousel-btn:hover {
+     
+    background: #5a1f6e; 
+    transform: translateY(-50%) scale(1.08); 
+
+}
+
+.carousel-btn.prev { 
+    
+    left: 16px; 
+
+}
+
+.carousel-btn.next { 
+    
+    right: 16px; 
+
+}
+
+.carousel-dots { 
+    
+    display: flex; 
+    justify-content: center; 
+    gap: 8px; 
+    margin-top: 16px; 
+
+}
+
+.c-dot {
+
+    width: 10px; 
+    height: 10px; 
+    border-radius: 50%;
+    background: #ddd; 
+    cursor: pointer; 
+    transition: background .2s, transform .2s;
+
+}
+
+.c-dot.active { 
+    
+    background: var(--purple); 
+    transform: scale(1.3); 
+
+}
+
+.p-img { 
+    
+    width: 150px;
+    height: 150px;
+    background: var(--white);
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    overflow: hidden; 
+    box-shadow: 0 8px 22px rgba(0,0,0,.15);
+
+}
+
+.p-img img {
+    
+    width: 82%; 
+    height: 82%; 
+    object-fit: contain; 
+
+}
+
+.p-name {
+
+    font-family: 'Fredoka One', cursive; 
+    font-size: 20px;
+    color: var(--purple); 
+    text-align: center; 
+    padding: 14px 10px 18px;
+
+}
+
+@media (max-width:960px) {
+
+    nav { 
+        
+        padding: 0 20px; 
+        overflow: visible; 
+    
+    }
+
+    nav ul { 
+        
+        display: none; 
+    
+    }
+
+    .hamburger-btn { 
+        
+        display: flex; 
+    
+    }
+
+    #hero { 
+        
+        flex-direction: column; 
+        padding: 20px 5% 0; 
+        min-height: auto; 
+    
+    }
+
+    .hero-left { 
+        
+        flex: none; 
+        max-width: 100%;
+        margin-left: 0px;
+    
+    }
+
+    .hero-title { 
+        
+        font-size: 42px; 
+    
+    }
+
+    .hero-right { 
+        
+        justify-content: center; 
+        padding-right: 0; 
+        margin-top: 30px;
+    
+    }
+
+    .hero-cup-img { 
+        
+        height: 260px;
+        margin-left: 0px;
+    
+    }
+
+    .hero-bag-img { 
+        
+        height: 200px; 
+    
+    }
+
+    .hero-bag-wrap { 
+        
+        margin-left: -50px; /* Ajuste de aproximação para mobile */
+    
+    }
+
+    .badge-delivery { 
+        
+        left: -20px; 
+        font-size: 12px; 
+        padding: 6px 12px; 
+    
+    }
+
+    .badge-loc { 
+        
+        right: 0; 
+        font-size: 12px; 
+        padding: 6px 12px; 
+    
+    }
+
+    .features-card { 
+        
+        flex-direction: column; 
+        gap: 28px; 
+        padding: 28px 24px; 
+    
+    }
+
+    .feat-item { 
+        
+        padding: 0; 
+    
+    }
+
+    .product-card { 
+        
+        flex: 0 0 calc(50% - 10px); 
+    
+    }
+
+    .order-layout { 
+        
+        grid-template-columns: 1fr; 
+    
+    }
+
+    .footer-main { 
+        
+        grid-template-columns: 1fr; 
+    
+    }
+
+    .footer-bottom { 
+        
+        flex-direction: column; 
+        gap: 20px; 
+    
+    }
+
+    .distancia-inner { 
+        
+        grid-template-columns: 1fr; 
+        gap: 36px; 
+    
+    }
+
+    .distancia-title { 
+        
+        font-size: 34px; 
+    
+    }
+
+    .card-categoria {
+
+        flex: 0 0 calc((100% - 40px) / 2);
+
+    }
+
+    .p-img {
+
+        width: 130px;
+        height: 130px;
+
+    }
+
+}
+
+@media (max-width:650px)
+{
+
+    #distancia {
+
+        min-height: 230px;
+    
+    }
+
+}
+
+@media (max-width:580px) {
+
+    .product-card { 
+        
+        flex: 0 0 100%; 
+
+    }
+
+    .distancia-title { 
+        
+        font-size: 28px; 
+    
+    }
+
+    nav { 
+        
+        padding: 0 16px;
+    
+    }
+
+    .hero-title { 
+        
+        font-size: 36px; 
+    
+    }
+
+    .hero-cup-img { 
+        
+        height: 200px;
+        margin-left: 0px;
+    
+    }
+
+    .hero-bag-img { 
+        
+        height: 160px; 
+    
+    }
+
+    .hero-bag-wrap { 
+        
+        margin-left: -40px; 
+    
+    }
+
+    .card-categoria {
+
+        flex: 0 0 calc((100% - 40px) / 2);
+
+    }
+
+    .p-img-circle {
+
+        width: 120px;
+        height: 120px;
+
+    }
+
+    .p-name {
+
+        font-size: 18px;
+        
+    }
+
+    .carousel-btn.prev { 
+    
+        left: -22px; 
+
+    }
+
+    .carousel-btn.next { 
+        
+        right: -22px; 
+
+    }
+
+}

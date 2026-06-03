@@ -1,11 +1,122 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang = "pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset = "UTF-8">
+    <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     <title>Cardápio Flavoretto</title>
+    <link href = "https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel = "stylesheet"/>
+    <link rel = "stylesheet" href="cardapio.css">
 </head>
 <body>
+
+<div class = "badge-aberto-fixed">
+  <div class = "dot-green"></div> Aberto
+</div>
+
+<section id = "hero">
+  <div class = "hero-rays"></div>
+  <div class = "hero-left">
+    <a href = "https://devkiry.github.io/flavoretto.jcg.code.studio/" class = "botoes_cima">◀ Sobre nós</a>
+    <button id = "mode-badge" class = "botoes_cima" onclick = "botaoModo()">Modo Claro ☀️</button>
+    <h1 class = "hero-title">ALEGRIA<br>ENTREGUE EM CASA.</h1>
+    <a href = "https://zapdelivery.me/flavorettosorveteseacai?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAdGRzdgR8WdRleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAaeEG7mjjjgfXmElG0zeXgvxCqvcOe-YvXOtXDH_japQRMyxHLxy7uMlJ2Cv_g_aem_N96MaGredPNLt1ZQWPCLcA" class="btn-delivery">Garanta o seu!</a>
+  </div>
+  <div class = "hero-right">
+    <img src = "../imagens/itembanner2.png" alt = "Copo de Açaí Flavoretto" class = "hero-cup-img"/>
+  </div>
+</section>
+
+<section id = "distancia">
+  <div class = "features-wrap">
+    <div class = "features-card">
+      <div class = "feat-item">
+        <img src = "../imagens/PIN ROXO.png" alt = "Sarandi - PR" class = "feat-icon-img" id = "pin"/>
+        <div class = "feat-body">
+          <h4>Sarandi - PR</h4>
+          <p>Entrega Sarandi e região em até 45 min</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id = "busca">
+  <input type = "text" id = "txtBusca" placeholder = "Buscar..."/>
+  <button>
+    <img src = "../imagens/LUPA ROXA.png" class = "feat-icon-img" alt = "Buscar" id = "lupa"/>
+  </button>
+</div>
+
+<section id = "categorias">
+  <div class = "sec-label">Categorias</div>
+    <div class="carousel-outer">
+      <button class = "carousel-btn prev" id = "carPrev">&#8592;</button>
+        <div class = "carousel-track-wrap">
+          <div class = "carousel-track" id = "carTrack">
+
+            <div class = "card-categoria">
+              <div class = "p-img">
+                <img id = "seuAcai" src = "../imagens/MONTE SEU AÇAÍ - ROXO.png" alt = "Monte seu Açaí">
+              </div>
+              <p class = "p-name">Monte o seu Açaí</p>
+            </div>
+
+            <div class = "card-categoria">
+              <div class = "p-img">
+                <img id = "copoPronto" src = "../imagens/COPO PRONTO ROXO.png" alt = "Copo pronto">
+              </div>
+              <p class = "p-name">Copo pronto</p>
+            </div>
+
+            <div class = "card-categoria">
+              <div class = "p-img">
+                <img id = "milkShake" src = "../imagens/MILK SHAKE - ROXO.png" alt = "Milk shake">
+              </div>
+              <p class = "p-name">Milk shake</p>
+            </div>
+
+            <div class = "card-categoria">
+              <div class = "p-img">
+                <img id = "shakeAcai" src = "../imagens/SHAKE AÇAÍ - ROXO.png" alt = "Shake açaí">
+              </div>
+              <p class = "p-name">Shake açaí</p>
+            </div>
+
+            <div class = "card-categoria">
+              <div class = "p-img">
+                <img id = "copoSorvete" src = "../imagens/COPO SORVETE - ROXO.png" alt = "Copo sorvete">
+              </div>
+              <p class = "p-name">Copo sorvete</p>
+            </div>
     
+            <div class = "card-categoria">
+              <div class = "p-img">
+                <img id = "adicional" src = "../imagens/ADICIONAL - ROXO.png" alt = "Adicional">
+              </div>
+              <p class = "p-name">Adicional</p>
+            </div>
+          </div>
+        </div>
+
+        <button class = "carousel-btn next" id = "carNext">&#8594;</button>
+
+        <div class = "carousel-dots" id = "carDots">
+          <div class = "c-dot active"></div>
+          <div class = "c-dot"></div>
+          <div class = "c-dot"></div>
+          <div class = "c-dot"></div>
+        </div>  
+    </div>
+  </div>
+</section>
+
+<nav>
+  <a href = "#hero" class = "nav-logo">
+    <img src="../imagens/Logo.png" alt = "Flavoretto Logo"/>
+  </a>
+</nav>
+
+<script src = "cardapio.js"></script>
+
 </body>
 </html>
