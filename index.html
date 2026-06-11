@@ -1,872 +1,228 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Flavoretto - Cardápio</title>
-<style>
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-/* ===== TEMA CLARO ===== */
-:root {
-  --header-bg: #F9C900;
-  --roxo: #A30097;
-  --branco: #fff;
-  --fundo: #f5f5f5;
-  --card-bg: #fafafa;
-  --borda: #e0e0e0;
-  --texto: #222;
-  --texto-cinza: #666;
-  --divisor-bg: #f0f0f0;
-  --main-bg: #fff;
-  --input-bg: #fafafa;
-  --preco-cor: #A30097;
-  --modo-btn-bg: #fff;
-  --modo-btn-cor: #A30097;
-  --modo-btn-borda: #A30097;
-  --secao-titulo: #A30097;
-  --cat-borda: #A30097;
-  --cat-ativo-bg: #A30097;
-  --cat-ativo-borda: #A30097;
-  
-  /* Cores dos novos botões dinâmicos */
-  --btn-sobre-bg: #F9C900;
-  --btn-sobre-cor: #222;
-  --btn-wpp-bg: #F9C900;
-  --btn-wpp-cor: #222;
-}
-
-/* ===== TEMA ESCURO ===== */
-body.dark {
-  --header-bg: #A30097;
-  --roxo: #F9C900;
-  --branco: #1a1a2e;
-  --fundo: #111120;
-  --card-bg: #1c1c30;
-  --borda: #2e2e50;
-  --texto: #f0f0f0;
-  --texto-cinza: #aaa;
-  --divisor-bg: #1a1a2e;
-  --main-bg: #16162a;
-  --input-bg: #1c1c30;
-  --preco-cor: #F9C900;
-  --modo-btn-bg: #252540;
-  --modo-btn-cor: #F9C900;
-  --modo-btn-borda: #F9C900;
-  --secao-titulo: #F9C900;
-  --cat-borda: #F9C900;
-  --cat-ativo-bg: #F9C900;
-  --cat-ativo-borda: #F9C900;
-  
-  /* Cores dos novos botões dinâmicos no escuro */
-  --btn-sobre-bg: #A30097;
-  --btn-sobre-cor: #fff;
-  --btn-wpp-bg: #A30097;
-  --btn-wpp-cor: #fff;
-}
-
-body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background: var(--fundo);
-  color: var(--texto);
-  min-height: 100vh;
-  transition: background 0.3s, color 0.3s;
-}
-
-/* ===== HEADER ===== */
-header {
-  background: var(--header-bg);
-  padding: 12px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-  transition: background 0.3s;
-}
-
-.logo img {
-  height: 38px;
-  object-fit: contain;
-}
-
-.modo-btn {
-  background: var(--modo-btn-bg);
-  border: 1.5px solid var(--modo-btn-borda);
-  border-radius: 20px;
-  padding: 6px 14px;
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--modo-btn-cor);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  transition: all 0.2s;
-}
-.modo-btn img { width: 16px; height: 16px; object-fit: contain; }
-
-/* ===== MAIN ===== */
-main {
-  max-width: 800px;
-  margin: 0 auto;
-  background: var(--main-bg);
-  min-height: 100vh;
-  padding-bottom: 80px;
-  transition: background 0.3s;
-}
-
-/* ===== SOBRE NÓS ===== */
-.sobre-nos { padding: 22px 20px 0; }
-
-.sobre-titulo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--texto);
-  margin-bottom: 16px;
-}
-
-/* Alterado para o mesmo estilo/tamanho do botão do WhatsApp */
-.btn-voltar {
-  background: var(--btn-sobre-bg);
-  color: var(--btn-sobre-cor);
-  border: none;
-  border-radius: 30px;
-  padding: 14px 36px;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-  transition: background 0.3s, color 0.3s, transform 0.15s;
-}
-.btn-voltar:hover { transform: translateY(-2px); }
-.btn-voltar img { width: 22px; height: 22px; object-fit: contain; }
-
-.sobre-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
-.sobre-info {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.info-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.info-icone {
-  width: 46px;
-  height: 46px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.info-icone img {
-  width: 46px;
-  height: 46px;
-  object-fit: contain;
-}
-
-.info-texto h4 {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--texto);
-  margin-bottom: 2px;
-}
-.info-texto p {
-  font-size: 0.76rem;
-  color: var(--texto-cinza);
-  line-height: 1.35;
-}
-
-.sobre-foto {
-  position: relative;
-  border-radius: 12px;
-  overflow: hidden;
-}
-.sobre-foto img.banner {
-  width: 100%;
-  height: 185px;
-  object-fit: cover;
-  border-radius: 12px;
-  display: block;
-}
-
-.loja-aberta {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background: white;
-  border-radius: 20px;
-  padding: 4px 10px;
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #222;
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-}
-.dot-verde {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: #4CAF50;
-  flex-shrink: 0;
-}
-
-/* ===== BUSCA ===== */
-.busca-wrap { padding: 18px 20px 0; position: relative; }
-
-.busca-lupa {
-  position: absolute;
-  left: 34px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-  pointer-events: none;
-  margin-top: 9px;
-}
-
-.busca-box {
-  width: 100%;
-  border: 1.5px solid var(--borda);
-  border-radius: 30px;
-  padding: 11px 18px 11px 46px;
-  font-size: 0.9rem;
-  background: var(--input-bg);
-  color: var(--texto);
-  outline: none;
-  transition: border 0.2s, background 0.3s;
-}
-.busca-box:focus { border-color: var(--roxo); }
-.busca-box::placeholder { color: var(--texto-cinza); }
-
-/* ===== CATEGORIAS ===== */
-.categorias { padding: 22px 20px 0; }
-.categorias h2 {
-  font-size: 1.05rem;
-  font-weight: 700;
-  color: var(--texto);
-  margin-bottom: 14px;
-}
-
-.cats-scroll {
-  display: flex;
-  gap: 10px;
-  overflow-x: auto;
-  padding-bottom: 6px;
-  scrollbar-width: none;
-}
-.cats-scroll::-webkit-scrollbar { display: none; }
-
-.cat-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 7px;
-  cursor: pointer;
-  flex-shrink: 0;
-  width: 76px;
-}
-
-.cat-circulo {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: 2px solid var(--cat-borda);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--main-bg);
-  transition: background 0.2s, transform 0.15s, border-color 0.3s;
-  overflow: hidden;
-}
-.cat-circulo img {
-  width: 36px;
-  height: 36px;
-  object-fit: contain;
-}
-.cat-item:hover .cat-circulo { transform: scale(1.06); }
-.cat-item.ativo .cat-circulo {
-  background: var(--cat-ativo-bg);
-  border-color: var(--cat-ativo-borda);
-}
-/* ativo: ícone fica branco/escuro dependendo do fundo */
-.cat-item.ativo .cat-circulo img { filter: brightness(0) invert(1); }
-body.dark .cat-item.ativo .cat-circulo img { filter: brightness(0); }
-
-.cat-item span {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--texto);
-  text-align: center;
-  line-height: 1.2;
-}
-
-/* ===== DIVISOR ===== */
-.divisor {
-  height: 8px;
-  background: var(--divisor-bg);
-  margin: 20px 0 0;
-  transition: background 0.3s;
-}
-
-/* ===== SEÇÕES ===== */
-.secao { padding: 22px 20px 0; }
-.secao h2 {
-  font-size: 1.05rem;
-  font-weight: 800;
-  color: var(--secao-titulo);
-  margin-bottom: 4px;
-  transition: color 0.3s;
-}
-.secao p.sub {
-  font-size: 0.8rem;
-  color: var(--texto-cinza);
-  margin-bottom: 14px;
-}
-
-/* ===== MONTE SEU AÇAÍ ===== */
-.produtos-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-
-.produto-card {
-  background: var(--card-bg);
-  border: 1px solid var(--borda);
-  border-radius: 10px;
-  padding: 14px;
-  transition: background 0.3s, border-color 0.3s;
-}
-.produto-card h4 {
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: var(--texto);
-  margin-bottom: 10px;
-}
-
-.tamanhos {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.tamanho-btn {
-  background: var(--main-bg);
-  border: 1.5px solid var(--borda);
-  border-radius: 8px;
-  padding: 5px 9px;
-  font-size: 0.75rem;
-  text-align: center;
-  cursor: pointer;
-  transition: border-color 0.2s, background 0.3s;
-  min-width: 52px;
-}
-.tamanho-btn:hover { border-color: var(--roxo); }
-.tamanho-btn .ml { font-weight: 700; color: var(--texto); display: block; font-size: 0.8rem; }
-.tamanho-btn .preco { color: var(--preco-cor); font-weight: 700; font-size: 0.75rem; transition: color 0.3s; }
-
-.marmita-opcoes { display: flex; gap: 10px; }
-.marmita-btn {
-  flex: 1;
-  background: var(--main-bg);
-  border: 1.5px solid var(--borda);
-  border-radius: 8px;
-  padding: 10px 8px;
-  font-size: 0.8rem;
-  text-align: center;
-  cursor: pointer;
-  transition: border-color 0.2s, background 0.3s;
-}
-.marmita-btn:hover { border-color: var(--roxo); }
-.marmita-btn .tam { font-weight: 700; color: var(--texto); display: block; margin-bottom: 4px; }
-.marmita-btn .preco { color: var(--preco-cor); font-weight: 700; font-size: 0.88rem; transition: color 0.3s; }
-
-/* ===== COPO PRONTO ===== */
-.copos-lista { display: flex; flex-direction: column; gap: 12px; }
-
-.copo-item {
-  display: flex;
-  align-items: center;
-  background: var(--card-bg);
-  border: 1px solid var(--borda);
-  border-radius: 10px;
-  padding: 12px;
-  gap: 12px;
-  cursor: pointer;
-  transition: box-shadow 0.2s, background 0.3s, border-color 0.3s;
-}
-.copo-item:hover { box-shadow: 0 2px 8px rgba(163,0,151,0.12); }
-
-.copo-icone {
-  width: 52px;
-  height: 52px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.copo-icone img { width: 48px; height: 48px; object-fit: contain; }
-
-.copo-info { flex: 1; }
-.copo-info h4 { font-size: 0.88rem; font-weight: 700; color: var(--texto); margin-bottom: 2px; }
-.copo-info p { font-size: 0.76rem; color: var(--texto-cinza); line-height: 1.3; }
-
-.copo-preco { font-size: 0.9rem; font-weight: 800; color: var(--preco-cor); text-align: right; white-space: nowrap; transition: color 0.3s; }
-.copo-preco small { display: block; font-size: 0.7rem; font-weight: 400; color: var(--texto-cinza); }
-
-/* ===== CARDS DE GRADE (shake, copa) ===== */
-.shakes-grid, .copas-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-}
-
-.shake-card, .copa-card {
-  background: var(--card-bg);
-  border: 1px solid var(--borda);
-  border-radius: 10px;
-  padding: 14px 12px;
-  cursor: pointer;
-  transition: box-shadow 0.2s, background 0.3s, border-color 0.3s;
-  text-align: center;
-}
-.shake-card:hover, .copa-card:hover { box-shadow: 0 2px 8px rgba(163,0,151,0.12); }
-
-.s-img { width: 52px; height: 52px; object-fit: contain; margin-bottom: 6px; }
-
-.shake-card h4, .copa-card h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; color: var(--texto); }
-.shake-card p, .copa-card p { font-size: 0.75rem; color: var(--texto-cinza); margin-bottom: 6px; line-height: 1.3; }
-.shake-card .preco, .copa-card .preco { color: var(--preco-cor); font-weight: 800; font-size: 0.9rem; transition: color 0.3s; }
-
-/* ===== ADICIONAIS ===== */
-.adicionais-lista {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 8px;
-}
-
-.adicional-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: var(--card-bg);
-  border: 1px solid var(--borda);
-  border-radius: 8px;
-  padding: 10px 12px;
-  font-size: 0.82rem;
-  transition: background 0.3s, border-color 0.3s;
-}
-.adicional-item span:first-child { color: var(--texto); font-weight: 500; }
-.adicional-item span:last-child { color: var(--preco-cor); font-weight: 700; transition: color 0.3s; }
-
-/* ===== WHATSAPP ===== */
-.whatsapp-wrap {
-  padding: 30px 20px 10px;
-  display: flex;
-  justify-content: center;
-}
-.whatsapp-btn {
-  background: var(--btn-wpp-bg);
-  color: var(--btn-wpp-cor);
-  border: none;
-  border-radius: 30px;
-  padding: 14px 36px;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-  transition: background 0.3s, color 0.3s, transform 0.15s;
-  text-decoration: none;
-}
-.whatsapp-btn:hover { transform: translateY(-2px); }
-.whatsapp-btn svg { width: 22px; height: 22px; flex-shrink: 0; fill: var(--btn-wpp-cor); transition: fill 0.3s; }
-
-/* ===== RESPONSIVO ===== */
-@media (max-width: 580px) {
-  .sobre-grid { grid-template-columns: 1fr; }
-  .sobre-foto { order: -1; }
-  .produtos-grid { grid-template-columns: 1fr; }
-  .shakes-grid, .copas-grid { grid-template-columns: 1fr; }
-  .adicionais-lista { grid-template-columns: 1fr; }
-}
-</style>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Flavoretto – Sabor que alegra seu dia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header>
-  <div class="logo">
-    <img id="logo-img" src="../imagens/logo.png" alt="Flavoretto">
+<div class="badge-aberto-fixed">
+  <div class="dot-green"></div> Aberto
+</div>
+
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <button class="mobile-close-btn" id="mobileCloseBtn">✕</button>
   </div>
-  <button class="modo-btn" onclick="toggleModo()">
-    <img id="modo-icone" src="../imagens/sol.png" alt="modo">
-    <span id="modo-texto">Modo escuro</span>
+  <ul class = "menu-text">
+    <li><a href="#hero" class="menu-link">Home</a></li>
+    <li><a href="#sobre" class="menu-link">Sobre</a></li>
+    <li><a href="#cardapio" class="menu-link">Cardápio</a></li>
+    <li><a href="#delivery" class="menu-link">Delivery</a></li>
+    <li><a href="#contato" class="menu-link">Contato</a></li>
+  </ul>
+</div>
+
+<nav>
+  <a href="#hero" class="nav-logo">
+    <img src="imagens/Logo.png" alt="Flavoretto Logo"/>
+  </a>
+  <ul>
+    <li><a href="#hero">Home</a></li>
+    <li><a href="#sobre">Sobre</a></li>
+    <li><a href="#cardapio">Cardápio</a></li>
+    <li><a href="#delivery">Delivery</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir menu">
+    <span></span>
+    <span></span>
+    <span></span>
   </button>
-</header>
+</nav>
 
-<main>
-
-  <div class="sobre-nos">
-    <div class="sobre-titulo">
-      <button class="btn-voltar" aria-label="Voltar">
-        <img src="../imagens/SETA RETORNO - ROXO.png" alt="voltar" id="seta-sobre">
-        <span>Sobre nós</span>
-      </button>
+<section id="hero">
+  <div class="hero-rays"></div>
+  <div class="hero-left">
+    <button id="mode-badge" aria-label="Mudar tema">
+      <img id="mode-icon" src="imagens/sol.png" alt="Ícone do tema" />
+      <span id="mode-text">Modo Claro</span>
+    </button>
+    <h1 class="hero-title">Sabor que<br>alegra seu dia.</h1>
+    <p class="hero-sub">Sorvetes e açaí preparados para transformar moments simples em experiências especiais.</p>
+    <a href="https://zapdelivery.me/flavorettosorveteseacai?utm_source=ig&utm_medium=social&utm_content=link_in_bio&fbclid=PAdGRzdgR8WdRleHRuA2FlbQIxMQBzcnRjBmFwcF9pZA81NjcwNjczNDMzNTI0MjcAAaeEG7mjjjgfXmElG0zeXgvxCqvcOe-YvXOtXDH_japQRMyxHLxy7uMlJ2Cv_g_aem_N96MaGredPNLt1ZQWPCLcA" class="btn-delivery">Peça Delivery</a>
+  </div>
+  <div class="hero-right">
+    <div class="hero-cup-wrap">
+      <div class="badge-delivery">😍 Delivery rápido e barato</div>
+      <img src="imagens/itembanner1.png" alt="Copo de Açaí Flavoretto" class="hero-cup-img"/>
     </div>
-    <div class="sobre-grid">
-      <div class="sobre-info">
-        <div class="info-item">
-          <div class="info-icone">
-            <img src="../imagens/entrega.png" alt="Entrega rápida" class="icone-info" data-tipo="entrega">
-          </div>
-          <div class="info-texto">
-            <h4>Entrega rápida</h4>
-            <p>Em toda Sarandi e região em até 45 min.</p>
-          </div>
-        </div>
-        <div class="info-item">
-          <div class="info-icone">
-            <img src="../imagens/horario.png" alt="Horário" class="icone-info" data-tipo="horario">
-          </div>
-          <div class="info-texto">
-            <h4>Terça a domingo</h4>
-            <p>Das 11h30 às 23h.</p>
-          </div>
-        </div>
-        <div class="info-item">
-          <div class="info-icone">
-            <img src="../imagens/coracao.png" alt="Qualidade" class="icone-info" data-tipo="coracao">
-          </div>
-          <div class="info-texto">
-            <h4>Qualidade e delícia</h4>
-            <p>Levamos felicidade até a sua casa.</p>
-          </div>
-        </div>
-      </div>
-      <div class="sobre-foto">
-        <img class="banner" src="../imagens/perfil.png" alt="Família Flavoretto">
-        <div class="loja-aberta">
-          <span class="dot-verde"></span>
-          LOJA ABERTA
-        </div>
-      </div>
+    <div class="hero-bag-wrap">
+      <img src="imagens/itembanner2.png" alt="Sacola Flavoretto" class="hero-bag-img"/>
+      <div class="badge-loc">📍 Sarandi e Região</div>
     </div>
   </div>
+</section>
 
-  <div class="busca-wrap">
-    <img class="busca-lupa" id="lupa-img" src="../imagens/LUPA AMARELA.png" alt="buscar">
-    <input class="busca-box" type="text" placeholder="Buscar no cardápio...">
+<section id="sobre" class="reveal">
+  <div class="sobre-inner">
+    <div class="sobre-text">
+      <h2 class="sobre-title">Mais sabor, mais praticidade,<br>mais Flavoretto.</h2>
+      <p class="sobre-p">Desde 2016, a Flavoretto transforma momentos simples em experiências cheias de sabor.</p>
+      <p class="sobre-p">Com uma proposta acessível, prática e acolhedora, levamos até nossos clientes sorvetes, açaís e sobremesas pensados para o dia a dia.</p>
+    </div>
+    <div class="sobre-video-wrap">
+      <video src="imagens/video-loja.mp4" autoplay muted loop playsinline></video>
+    </div>
   </div>
+</section>
 
-  <div class="divisor"></div>
-
-  <div class="categorias">
-    <h2>Categorias</h2>
-    <div class="cats-scroll">
-      <div class="cat-item ativo" data-id="acai">
-        <div class="cat-circulo">
-          <img class="cat-img" src="../imagens/MONTE SEU AÇAÍ - AMARELO.png" alt="Monte seu Açaí">
-        </div>
-        <span>Monte o seu Açaí</span>
+<div class="features-wrap reveal">
+  <div class="features-card">
+    <div class="feat-item">
+      <img src="imagens/entregador-10.png" alt="Delivery rápido" class="feat-icon-img"/>
+      <div class="feat-body">
+        <h4>Delivery rápido</h4>
+        <p>Seu pedido chegando com praticidade, agilidade e muito sabor.</p>
       </div>
-      <div class="cat-item" data-id="copo-pronto">
-        <div class="cat-circulo">
-          <img class="cat-img" src="../imagens/COPO PRONTO AMARELO.png" alt="Copo Pronto">
-        </div>
-        <span>Copo pronto</span>
+    </div>
+    <div class="feat-item">
+      <img src="imagens/entregador-11.png" alt="Sabores que conquistam" class="feat-icon-img"/>
+      <div class="feat-body">
+        <h4>Sabores que conquistam</h4>
+        <p>Açaís, sorvetes e sobremesas preparados para todos os gostos.</p>
       </div>
-      <div class="cat-item" data-id="milkshake">
-        <div class="cat-circulo">
-          <img class="cat-img" src="../imagens/MILK SHAKE - AMARELO.png" alt="Milk Shake">
-        </div>
-        <span>Milk Shake</span>
-      </div>
-      <div class="cat-item" data-id="shake-acai">
-        <div class="cat-circulo">
-          <img class="cat-img" src="../imagens/SHAKE AÇAÍ - AMARELO.png" alt="Shake de Açaí">
-        </div>
-        <span>Shake de Açaí</span>
-      </div>
-      <div class="cat-item" data-id="copa-sorvete">
-        <div class="cat-circulo">
-          <img class="cat-img" src="../imagens/COPO SORVETE AMARELO.png" alt="Copa Sorvete">
-        </div>
-        <span>Copa Sorvete</span>
-      </div>
-      <div class="cat-item" data-id="adicional">
-        <div class="cat-circulo">
-          <img class="cat-img" src="../imagens/ADICIONAL - AMARELO.png" alt="Adicional">
-        </div>
-        <span>Adicional</span>
+    </div>
+    <div class="feat-item">
+      <img src="imagens/entregador-12.png" alt="Preço que cabe no bolso" class="feat-icon-img"/>
+      <div class="feat-body">
+        <h4>Preço que cabe no bolso</h4>
+        <p>Mais custo-benefício para aproveitar sem preocupação.</p>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="divisor"></div>
-
-  <div class="secao" id="acai">
-    <h2>Monte o seu Açaí</h2>
-    <p class="sub">Açaí puro. Acrescente adicionais</p>
-    <div class="produtos-grid">
-      <div class="produto-card">
-        <h4>Copo de Açaí</h4>
-        <div class="tamanhos">
-          <div class="tamanho-btn"><span class="ml">300ml</span><span class="preco">R$ 16,00</span></div>
-          <div class="tamanho-btn"><span class="ml">400ml</span><span class="preco">R$ 18,00</span></div>
-          <div class="tamanho-btn"><span class="ml">500ml</span><span class="preco">R$ 20,00</span></div>
-          <div class="tamanho-btn"><span class="ml">700ml</span><span class="preco">R$ 23,00</span></div>
+<section id="cardapio" class="reveal">
+  <div class="sec-label">Nossos Produtos</div>
+  <div class="sec-sub">Os Queridinhos ❤️</div>
+  <div class="carousel-outer">
+    <button class="carousel-btn prev" id="carPrev">←</button>
+    <div class="carousel-track-wrap">
+      <div class="carousel-track" id="carTrack">
+        <div class="product-card">
+          <div class="p-img"><img src="imagens/queridinho1.png" alt="Copo de Açaí"/></div>
+          <div class="p-name">Copo de Açaí</div>
+        </div>
+        <div class="product-card">
+          <div class="p-img"><img src="imagens/queridinho2.png" alt="Marmita de Açaí"/></div>
+          <div class="p-name">Marmita de Açaí</div>
+        </div>
+        <div class="product-card">
+          <div class="p-img"><img src="imagens/queridinho3.png" alt="Casquinhas"/></div>
+          <div class="p-name">Casquinhas</div>
+        </div>
+        <div class="product-card">
+          <div class="p-img"><img src="imagens/queridinho4.png" alt="Milk-shakes"/></div>
+          <div class="p-name">Milk-shakes</div>
         </div>
       </div>
-      <div class="produto-card">
-        <h4>Marmita de Açaí</h4>
-        <p style="font-size:0.76rem;color:var(--texto-cinza);margin-bottom:8px;">Açaí puro + 2 adicionais inclusos</p>
-        <div class="marmita-opcoes">
-          <div class="marmita-btn"><span class="tam">Tamanho M</span><span class="preco">R$ 37,00</span></div>
-          <div class="marmita-btn"><span class="tam">Tamanho G</span><span class="preco">R$ 47,00</span></div>
+    </div>
+    <button class="carousel-btn next" id="carNext">→</button>
+    <div class="carousel-dots" id="carDots">
+      <div class="c-dot active"></div>
+      <div class="c-dot"></div>
+      <div class="c-dot"></div>
+      <div class="c-dot"></div>
+    </div>
+  </div>
+  <a href="https://devkiry.github.io/flavoretto.jcg.code.studio/cardapio/cardapio" class="btn-full">Cardápio completo →</a>
+</section>
+
+<section id="delivery" class="reveal">
+  <h2 class="order-title">Encontrou algo no cardápio<br>que chamou sua atenção?</h2>
+  <p class="order-sub">Preencha as informações abaixo para continuar o atendimento pelo WhatsApp.</p>
+  <div class="order-layout">
+    <div class="order-form">
+      <div class="form-group">
+        <label>Seu nome:</label>
+        <input type="text" id="nome" placeholder="Como podemos te chamar?"/>
+      </div>
+      <div class="form-group">
+        <label>Produto desejado:</label>
+        <input type="text" id="produto" placeholder="Descreva o item escolhido..."/>
+      </div>
+      <div class="form-group">
+        <label>Endereço para entrega:</label>
+        <input type="text" id="endereco" placeholder="Rua, número e bairro..."/>
+      </div>
+      <div class="form-group">
+        <label>Observações (opcional):</label>
+        <textarea id="obs" placeholder="Retirar ingredientes, complementos, etc..."></textarea>
+      </div>
+      <button class="btn-send" id="btnSend">Enviar informações</button>
+    </div>
+    <div class="order-info">
+      <div class="info-row">
+        <div class="info-ico">
+          <img src="imagens/entrega.png" alt="Ícone Entrega" class="info-ico-img"/>
         </div>
+        <div><h4>Entrega rápida</h4><p>Em toda Sarandi e região.</p></div>
+      </div>
+      <div class="info-row">
+        <div class="info-ico">
+          <img src="imagens/horario.png" alt="Ícone Horário" class="info-ico-img"/>
+        </div>
+        <div><h4>Terça a domingo</h4><p>Das 11h30 às 23h.</p></div>
+      </div>
+      <div class="info-row">
+        <div class="info-ico">
+          <img src="imagens/coracao.png" alt="Ícone Coração" class="info-ico-img"/>
+        </div>
+        <div><h4>Qualidade e delícia</h4><p>Levamos felicidade até a sua casa.</p></div>
       </div>
     </div>
   </div>
+</section>
 
-  <div class="divisor"></div>
-
-  <div class="secao" id="copo-pronto">
-    <h2>Copo pronto</h2>
-    <p class="sub">Montados com carinho, prontos pra você!</p>
-    <div class="copos-lista">
-      <div class="copo-item">
-        <div class="copo-icone"><img class="item-img" src="../imagens/COPO PRONTO AMARELO.png" alt="Copo Pronto"></div>
-        <div class="copo-info"><h4>Açaí com Morango</h4><p>Açaí, granola, leite condensado e morango fresco</p></div>
-        <div class="copo-preco">R$ 22,00<small>300ml</small></div>
-      </div>
-      <div class="copo-item">
-        <div class="copo-icone"><img class="item-img" src="../imagens/COPO PRONTO AMARELO.png" alt="Copo Pronto"></div>
-        <div class="copo-info"><h4>Açaí com Banana</h4><p>Açaí, granola, mel e banana em rodelas</p></div>
-        <div class="copo-preco">R$ 22,00<small>300ml</small></div>
-      </div>
-      <div class="copo-item">
-        <div class="copo-icone"><img class="item-img" src="../imagens/COPO PRONTO AMARELO.png" alt="Copo Pronto"></div>
-        <div class="copo-info"><h4>Açaí Chocolate</h4><p>Açaí, granola, Nutella e leite em pó</p></div>
-        <div class="copo-preco">R$ 24,00<small>300ml</small></div>
-      </div>
+<footer id="contato" class="reveal">
+  <div class="footer-brand">
+    <img src="imagens/Logo.png" alt="Flavoretto"/>
+  </div>
+  <div class="footer-main">
+    <div class="footer-addr">
+      <h4>Visite nossa loja física!</h4>
+      <p>Sarandi-PR<br>Av. Rio Branco, 284<br>Id. Independência III<br>CEP: 87114-230</p>
+    </div>
+    <div class="footer-map-box">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3661.1717208535174!2d-51.8753239!3d-23.4181827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94edd39da21bd04b%3A0x6335a11be07ab0a7!2sAv.%20Rio%20Branco%2C%20284%20-%20Jardim%20Independencia%20Maringa%2C%20Sarandi%20-%20PR%2C%2087114-230!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
   </div>
-
-  <div class="divisor"></div>
-
-  <div class="secao" id="milkshake">
-    <h2>Milk Shake</h2>
-    <p class="sub">Cremosos e irresistíveis!</p>
-    <div class="shakes-grid">
-      <div class="shake-card">
-        <img class="s-img item-img" src="../imagens/MILK SHAKE - AMARELO.png" alt="Milk Shake">
-        <h4>Shake de Morango</h4><p>Morango, sorvete e leite</p>
-        <div class="preco">R$ 18,00</div>
-      </div>
-      <div class="shake-card">
-        <img class="s-img item-img" src="../imagens/MILK SHAKE - AMARELO.png" alt="Milk Shake">
-        <h4>Shake de Chocolate</h4><p>Chocolate, sorvete e leite</p>
-        <div class="preco">R$ 18,00</div>
-      </div>
-      <div class="shake-card">
-        <img class="s-img item-img" src="../imagens/MILK SHAKE - AMARELO.png" alt="Milk Shake">
-        <h4>Shake de Baunilha</h4><p>Baunilha, sorvete e leite</p>
-        <div class="preco">R$ 17,00</div>
-      </div>
-      <div class="shake-card">
-        <img class="s-img item-img" src="../imagens/MILK SHAKE - AMARELO.png" alt="Milk Shake">
-        <h4>Shake de Açaí</h4><p>Açaí, sorvete e leite</p>
-        <div class="preco">R$ 20,00</div>
-      </div>
+  <div class="footer-bottom">
+    <div class="footer-col">
+      <h4>Telefone:</h4>
+      <a href="https://wa.me/554499569652" class="foot-link">
+        <div class="fl-ico">
+          <img src="imagens/whatsapp.png" alt="WhatsApp Logo" class="fl-ico-img"/>
+        </div> +55 44 9956-9652
+      </a>
+    </div>
+    <div class="footer-col">
+      <h4>Siga nossa rede social:</h4>
+      <a href="https://www.instagram.com/flavorettosorveteria?igsh=MWQ4aHVobTV0ZTBzNA==" target="_blank" class="foot-link">
+        <div class="fl-ico">
+          <img src="imagens/instagram.png" alt="Instagram Logo" class="fl-ico-img"/>
+        </div> Instagram
+      </a>
     </div>
   </div>
-
-  <div class="divisor"></div>
-
-  <div class="secao" id="shake-acai">
-    <h2>Shake de Açaí</h2>
-    <p class="sub">A combinação perfeita!</p>
-    <div class="shakes-grid">
-      <div class="shake-card">
-        <img class="s-img item-img" src="../imagens/SHAKE AÇAÍ - AMARELO.png" alt="Shake Açaí">
-        <h4>Shake Açaí Morango</h4><p>Açaí batido com morango</p>
-        <div class="preco">R$ 22,00</div>
-      </div>
-      <div class="shake-card">
-        <img class="s-img item-img" src="../imagens/SHAKE AÇAÍ - AMARELO.png" alt="Shake Açaí">
-        <h4>Shake Açaí Banana</h4><p>Açaí batido com banana</p>
-        <div class="preco">R$ 22,00</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="divisor"></div>
-
-  <div class="secao" id="copa-sorvete">
-    <h2>Copa Sorvete</h2>
-    <p class="sub">Sorvete artesanal em diversas combinações</p>
-    <div class="copas-grid">
-      <div class="copa-card">
-        <img class="s-img item-img" src="../imagens/COPO SORVETE AMARELO.png" alt="Copa Sorvete">
-        <h4>Copa Simples</h4><p>1 sabor + cobertura</p>
-        <div class="preco">R$ 12,00</div>
-      </div>
-      <div class="copa-card">
-        <img class="s-img item-img" src="../imagens/COPO SORVETE AMARELO.png" alt="Copa Sorvete">
-        <h4>Copa Dupla</h4><p>2 sabores + cobertura</p>
-        <div class="preco">R$ 16,00</div>
-      </div>
-      <div class="copa-card">
-        <img class="s-img item-img" src="../imagens/COPO SORVETE AMARELO.png" alt="Copa Sorvete">
-        <h4>Copa Especial</h4><p>3 sabores + 2 coberturas + granola</p>
-        <div class="preco">R$ 22,00</div>
-      </div>
-      <div class="copa-card">
-        <img class="s-img item-img" src="../imagens/COPO SORVETE AMARELO.png" alt="Copa Sorvete">
-        <h4>Copa Kids</h4><p>1 sabor + cobertura + confeito</p>
-        <div class="preco">R$ 9,00</div>
-      </div>
-    </div>
-  </div>
-
-  <div class="divisor"></div>
-
-  <div class="secao" id="adicional">
-    <h2>Adicional</h2>
-    <p class="sub">Personalize do seu jeito!</p>
-    <div class="adicionais-lista">
-      <div class="adicional-item"><span>Granola</span><span>R$ 2,00</span></div>
-      <div class="adicional-item"><span>Leite condensado</span><span>R$ 2,00</span></div>
-      <div class="adicional-item"><span>Morango</span><span>R$ 3,00</span></div>
-      <div class="adicional-item"><span>Banana</span><span>R$ 2,00</span></div>
-      <div class="adicional-item"><span>Nutella</span><span>R$ 4,00</span></div>
-      <div class="adicional-item"><span>Mel</span><span>R$ 2,00</span></div>
-      <div class="adicional-item"><span>Leite em pó</span><span>R$ 2,00</span></div>
-      <div class="adicional-item"><span>Paçoca</span><span>R$ 2,00</span></div>
-    </div>
-  </div>
-
-  <div class="whatsapp-wrap">
-    <a href="https://wa.me/554499569652" class="whatsapp-btn" target="_blank">
-      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-      Chamar no WhatsApp
-    </a>
-  </div>
-
-</main>
-
-<script>
-  // ===== MAPEAMENTO DE IMAGENS POR MODO =====
-  const IMGS = {
-    light: {
-      logo: '../imagens/logo.png',
-      modoBotao: '../imagens/sol.png',
-      modoTexto: 'Modo escuro',
-      lupa: '../imagens/LUPA AMARELA.png',
-      seta: '../imagens/SETA RETORNO - ROXO.png',
-      cats: [
-        '../imagens/MONTE SEU AÇAÍ - AMARELO.png',
-        '../imagens/COPO PRONTO AMARELO.png',
-        '../imagens/MILK SHAKE - AMARELO.png',
-        '../imagens/SHAKE AÇAÍ - AMARELO.png',
-        '../imagens/COPO SORVETE AMARELO.png',
-        '../imagens/ADICIONAL - AMARELO.png',
-      ],
-      copoPronto: '../imagens/COPO PRONTO AMARELO.png',
-      milkShake: '../imagens/MILK SHAKE - AMARELO.png',
-      shakeAcai: '../imagens/SHAKE AÇAÍ - AMARELO.png',
-      copoSorvete: '../imagens/COPO SORVETE AMARELO.png',
-    },
-    dark: {
-      logo: '../imagens/Logo.png',
-      modoBotao: '../imagens/lua.png',
-      modoTexto: 'Modo claro',
-      lupa: '../imagens/LUPA ROXA.png',
-      seta: '../imagens/SETA RETORNO - ROXO.png',
-      cats: [
-        '../imagens/MONTE SEU AÇAÍ - ROXO.png',
-        '../imagens/COPO PRONTO ROXO.png',
-        '../imagens/MILK SHAKE - ROXO.png',
-        '../imagens/SHAKE AÇAÍ - ROXO.png',
-        '../imagens/COPO SORVETE - ROXO.png',
-        '../imagens/ADICIONAL - ROXO.png',
-      ],
-      copoPronto: '../imagens/COPO PRONTO ROXO.png',
-      milkShake: '../imagens/MILK SHAKE - ROXO.png',
-      shakeAcai: '../imagens/SHAKE AÇAÍ - ROXO.png',
-      copoSorvete: '../imagens/COPO SORVETE - ROXO.png',
-    }
-  };
-
-  let darkMode = false;
-
-  function applyTheme(isDark) {
-    const t = isDark ? IMGS.dark : IMGS.light;
-    document.body.classList.toggle('dark', isDark);
-
-    document.getElementById('logo-img').src = t.logo;
-    document.getElementById('modo-icone').src = t.modoBotao;
-    document.getElementById('modo-texto').textContent = t.modoTexto;
-    document.getElementById('lupa-img').src = t.lupa;
-
-    // Categorias
-    document.querySelectorAll('.cat-img').forEach((img, i) => {
-      if (t.cats[i]) img.src = t.cats[i];
-    });
-
-    // Ícones dos itens
-    document.querySelectorAll('#copo-pronto .item-img').forEach(img => img.src = t.copoPronto);
-    document.querySelectorAll('#milkshake .item-img').forEach(img => img.src = t.milkShake);
-    document.querySelectorAll('#shake-acai .item-img').forEach(img => img.src = t.shakeAcai);
-    document.querySelectorAll('#copa-sorvete .item-img').forEach(img => img.src = t.copoSorvete);
-  }
-
-  function toggleModo() {
-    darkMode = !darkMode;
-    applyTheme(darkMode);
-  }
-
-  // Categorias: scroll e ativo
-  document.querySelectorAll('.cat-item').forEach(item => {
-    item.addEventListener('click', function() {
-      document.querySelectorAll('.cat-item').forEach(c => c.classList.remove('ativo'));
-      this.classList.add('ativo');
-      const id = this.dataset.id;
-      const el = document.getElementById(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-  });
-
-  // Busca
-  document.querySelector('.busca-box').addEventListener('input', function() {
-    const q = this.value.toLowerCase();
-    document.querySelectorAll('.copo-item, .shake-card, .copa-card, .adicional-item, .produto-card').forEach(el => {
-      el.style.display = (q === '' || el.textContent.toLowerCase().includes(q)) ? '' : 'none';
-    });
-  });
-</script>
+  <div class="footer-copy">© 2026 Flavoretto – Todos os direitos reservados</div>
+</footer>
+<script src="script.js"></script>
 </body>
 </html>
