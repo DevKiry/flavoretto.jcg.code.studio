@@ -886,6 +886,7 @@ nav ul li a:hover {
 .form-group input, .form-group textarea {
 
     width: 100%; 
+    max-width: 100%;
     padding: 12px 16px; 
     border: none; 
     border-radius: 10px;
@@ -1210,7 +1211,7 @@ footer {
 
     .badge-delivery { 
         
-        left: -20px; 
+        left: 160px; 
         font-size: 12px; 
         padding: 6px 12px; 
     
@@ -1218,7 +1219,9 @@ footer {
 
     .badge-loc { 
         
-        right: 0; 
+        bottom: auto; 
+        margin-top: 15px; 
+        right: 15px; 
         font-size: 12px; 
         padding: 6px 12px; 
     
@@ -1247,7 +1250,18 @@ footer {
     .order-layout { 
         
         grid-template-columns: 1fr; 
+        gap: 40px;
     
+    }
+
+    /* Correção de preenchimento do formulário no celular */
+    .order-form {
+        padding: 24px 20px;
+    }
+
+    /* Garante que o bloco informativo não fique grudado na tela */
+    .order-info {
+        padding: 0 10px;
     }
 
     .footer-main { 
