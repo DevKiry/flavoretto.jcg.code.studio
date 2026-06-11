@@ -9,7 +9,7 @@
 :root {
 
     --yellow: #F9C900;
-    --purple: #7B2D8B;
+    --purple: #A30097;
     --white: #FFFFFF;
     --text-dark: #111;
     --text-gray: #555;
@@ -19,7 +19,7 @@
 body.dark-mode {
 
     --yellow: #7B2D8B;
-    --purple: #F9C900;
+    --purple: #A30097;
     --white: #111;
     --text-dark: #FFFFFF;
     --text-gray: #aaaaaa;
